@@ -18,6 +18,7 @@
                       <p>{{ post.intro }}</p>
 
                       <p>{{ post.body }}</p>
+                      <p><small>Category: <a href="{% url 'category_title' post.category.slug %}">{{ post.category }}</a></small></p>
                     <hr>
                     <h2 class="subtitle is-4">Comments</h2>
                     <form method="POST" class="mb-6">

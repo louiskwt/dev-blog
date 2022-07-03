@@ -1,14 +1,14 @@
 {% extends 'core/base.html' %}
 
 <!-- Title -->
-{% block title %}Home{% endblock %}
+{% block title %}{{ category.title }}{% endblock %}
 
 <!-- Content -->
 {% block content %}
 <section class="hero">
   <div class="hero-body">
     <div class="container">
-        {% for post in posts %}
+        {% for post in category.posts.all %}
             <section class="section">
             <div class="columns">
                 <div class="column is-8 is-offset-2">

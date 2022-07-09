@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+
+<!-- Title -->
+{% block title %}Search{% endblock %}
+
+<!-- Content -->
+{% block content %}
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+        <section class="section">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                <div class="content is-medium">
+                    <h1 class="title">Search results</h1>
+                    <h3>Query: "{{ query }}"</h3>
+                </div>
+                </div>
+            </div>
+        </section>
+        {% for post in posts %}
+            <section class="section">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                <div class="content is-medium">
+                    <a href="{% url 'post_detail' post.category.slug post.slug %}">
+                      <h2 class="subtitle is-4">{{ post.created_at|date:'M-d-y H:i' }}</h2>
+                      <h1 class="title">{{ post.title }}</h1>
+                      <p>{{ post.intro }}</p>
+                    </a>
+                </div>
+                </div>
+            </div>
+            </section>
+            <div class="is-divider"></div>
+        {% empty %}
+            <div class="content">
+              <p>There is no post in this category yet...</p>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

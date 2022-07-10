@@ -28,10 +28,18 @@
                     <form method="POST" class="mb-6">
                       {% csrf_token %}
 
-                      {{ form.as_p }}
+                      <!-- {{ form.as_p }} -->
+                      {% for field in form.visible_fields %}
+                        <div class="field">
+                          <label class="label">{{ field.label_tag }}</label>
+                          <div class="control">
+                            <input class="input" name="{{ field.name }}" type="{{ field.field_type }}" placeholder="{{ field.label }}" />
+                          </div>
+                        </div>
+                      {% endfor %}
                       <div class="field">
                         <div class="control">
-                          <button class="button is-success">
+                          <button class="button is-success mt-3">
                             Submit Comment
                           </button>
                         </div>
